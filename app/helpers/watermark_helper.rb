@@ -1,0 +1,2 @@
+module WatermarkHelper
+end
