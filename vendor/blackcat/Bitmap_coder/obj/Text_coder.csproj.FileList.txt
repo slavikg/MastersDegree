@@ -1,0 +1,14 @@
+obj\Debug\Text_coder.exe
+obj\Debug\Text_coder.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Text_Coder.MainForm.resources
+obj\Debug\Text_coder.Properties.Resources.resources
+obj\Debug\Text_coder.csproj.GenerateResource.Cache
+bin\Debug\Text_coder.exe.manifest
+bin\Debug\Text_coder.application
+bin\Debug\Text_coder.exe
+bin\Debug\Text_coder.pdb
+bin\Debug\Sapienware.Types.dll
+obj\Debug\Text_coder.TrustInfo.xml
+obj\Debug\Text_coder.exe.manifest
+obj\Debug\Text_coder.application

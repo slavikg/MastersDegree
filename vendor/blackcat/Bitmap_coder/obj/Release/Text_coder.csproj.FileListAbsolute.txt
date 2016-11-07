@@ -1,0 +1,65 @@
+D:\Temp\For_Uliana\For_Uliana\bin\Release\Text_coder.exe
+D:\Temp\For_Uliana\For_Uliana\bin\Release\Text_coder.pdb
+D:\Temp\For_Uliana\For_Uliana\bin\Release\Sapienware.Types.dll
+D:\Temp\For_Uliana\For_Uliana\obj\Release\ResolveAssemblyReference.cache
+D:\Temp\For_Uliana\For_Uliana\obj\Release\For_Uliana.MainForm.resources
+D:\Temp\For_Uliana\For_Uliana\obj\Release\Text_coder.Properties.Resources.resources
+D:\Temp\For_Uliana\For_Uliana\obj\Release\Text_coder.csproj.GenerateResource.Cache
+D:\Temp\For_Uliana\For_Uliana\obj\Release\Text_coder.exe
+D:\Temp\For_Uliana\For_Uliana\obj\Release\Text_coder.pdb
+D:\Temp\For_Uliana\Text_coder\bin\Release\Text_coder.exe
+D:\Temp\For_Uliana\Text_coder\bin\Release\Text_coder.pdb
+D:\Temp\For_Uliana\Text_coder\bin\Release\Sapienware.Types.dll
+D:\Temp\For_Uliana\Text_coder\obj\Release\ResolveAssemblyReference.cache
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.Properties.Resources.resources
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.csproj.GenerateResource.Cache
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.exe
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.pdb
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_Coder.MainForm.resources
+D:\Temp\For_Uliana\Text_coder\bin\Release\Text_coder.exe.manifest
+D:\Temp\For_Uliana\Text_coder\bin\Release\Text_coder.application
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.TrustInfo.xml
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.exe.manifest
+D:\Temp\For_Uliana\Text_coder\obj\Release\Text_coder.application
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\bin\Release\Text_coder.exe.manifest
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\bin\Release\Text_coder.application
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\bin\Release\Text_coder.exe
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\bin\Release\Text_coder.pdb
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\bin\Release\Sapienware.Types.dll
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\ResolveAssemblyReference.cache
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_Coder.MainForm.resources
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.Properties.Resources.resources
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.csproj.GenerateResource.Cache
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.TrustInfo.xml
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.exe.manifest
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.application
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.exe
+D:\Uliana\Polytech\Aspirantura\Dissertation\researches\Programs\08-09\last version\Text_coder\Text_coder\obj\Release\Text_coder.pdb
+D:\Temp\For_Uliana\Text_coder22\Text_coder\bin\Release\Text_coder.exe.manifest
+D:\Temp\For_Uliana\Text_coder22\Text_coder\bin\Release\Text_coder.application
+D:\Temp\For_Uliana\Text_coder22\Text_coder\bin\Release\Text_coder.exe
+D:\Temp\For_Uliana\Text_coder22\Text_coder\bin\Release\Text_coder.pdb
+D:\Temp\For_Uliana\Text_coder22\Text_coder\bin\Release\Sapienware.Types.dll
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\ResolveAssemblyReference.cache
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_Coder.MainForm.resources
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.Properties.Resources.resources
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.csproj.GenerateResource.Cache
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.TrustInfo.xml
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.exe.manifest
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.application
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.exe
+D:\Temp\For_Uliana\Text_coder22\Text_coder\obj\Release\Text_coder.pdb
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.exe
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.pdb
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\bin\Release\Text_coder.exe.manifest
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\bin\Release\Text_coder.application
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\bin\Release\Text_coder.exe
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\bin\Release\Text_coder.pdb
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\bin\Release\Sapienware.Types.dll
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_Coder.MainForm.resources
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.Properties.Resources.resources
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.csproj.GenerateResource.Cache
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.TrustInfo.xml
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.exe.manifest
+C:\Documents and Settings\Uliana\Мои документы\Downloads\Text_coder22\Text_coder22\Text_coder\obj\Release\Text_coder.application
