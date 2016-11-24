@@ -1,0 +1,8 @@
+- page_title 'Watermark'
+
+.container
+  = form_for @watermark, method: :post, url: watermark_index_path, html: { multipart: true } do |f|
+    = f.file_field :watermark
+    = f.file_field :original_image
+
+    = f.submit 'Do it'

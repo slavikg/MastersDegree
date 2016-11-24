@@ -1,0 +1,13 @@
+- page_title 'Result'
+
+.container
+  .row
+    .col-xs-6
+      %h4 Original image
+      = image_tag @watermark.original_image.url
+    .col-xs-6
+      %h4 Watermark
+      = image_tag @watermark.watermark.url
+    .col-xs-12
+      %h1 Result image
+      %h2.text-danger No Present Now
