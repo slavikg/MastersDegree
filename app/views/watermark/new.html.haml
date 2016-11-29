@@ -2,7 +2,9 @@
 
 .container
   = form_for @watermark, method: :post, url: watermark_index_path, html: { multipart: true } do |f|
-    = f.file_field :watermark
+    %h3 Original image
     = f.file_field :original_image
+    %h3 Watermark
+    = f.file_field :watermark
 
     = f.submit 'Do it'

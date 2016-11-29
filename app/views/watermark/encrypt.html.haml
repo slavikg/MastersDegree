@@ -1,0 +1,28 @@
+- page_title 'Encrypt'
+
+.container
+  .row
+    .col-xs-6
+      %h4 Original image
+      = image_tag @watermark.original_image.url
+    .col-xs-6
+      %h4 Watermark
+      = image_tag @watermark.watermark.url
+
+  .row
+    .col-xs-6
+      %h4 Image with watermark
+      = image_tag "/result/#{@watermark.id}/encrypt_image.bmp"
+    .col-xs-6
+      %h4 Difference image between origin image and image with watermark
+      = image_tag "/result/#{@watermark.id}/difference_original_image.bmp"
+
+  .row
+    .col-xs-6
+      %h3= 'PSNR: ' + @psnr
+    .col-xs-6
+      %h3= 'SSIM: ' + @ssim
+
+  .row
+    .col-xs-12
+      = link_to 'Decrypt', decrypt_watermark_path(@watermark), class: 'btn btn-primary'

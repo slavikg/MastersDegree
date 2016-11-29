@@ -8,6 +8,24 @@
     .col-xs-6
       %h4 Watermark
       = image_tag @watermark.watermark.url
+  .row
+    .col-xs-6
+      %h1= @watermark.original_image.height
+      %h1= @watermark.original_image.width
+      %h2= @original_image_path
+    .col-xs-6
+      %h1= @watermark.watermark.height
+      %h1= @watermark.watermark.width
+      %h2= @watermark_path
     .col-xs-12
       %h1 Result image
       %h2.text-danger No Present Now
+      = link_to 'Encrypt', encrypt_watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to 'Decrypt', decrypt_watermark_path(@watermark), class: 'btn btn-primary'
+
+
+  .row
+    - @new_image_paths.each do |image|
+      .col-xs-6
+        %h4= image[:name]
+        = image_tag image[:path]
