@@ -1,0 +1,75 @@
+- page_title 'Decrypt with attack'
+
+- if @is_attack_not_all
+  .container
+    %h1
+      Attack:
+      = @attack_name
+    .row
+      .col-xs-4
+        %h4 Original image
+        = image_tag @watermark.original_image.url, class: 'img-responsive'
+      .col-xs-4
+        %h4 Image with watermark
+        = image_tag "/result/#{@watermark.id}/encrypt_image.bmp", class: 'img-responsive'
+      .col-xs-4
+        %h4 Attacked image
+        = image_tag @attacked_image_path, class: 'img-responsive'
+
+    .row
+      .col-xs-4
+        %h4 Watermark
+        = image_tag @watermark.watermark.url
+      .col-xs-4
+        %h4 Decrypted watermark
+        = image_tag "/result/#{@watermark.id}/watermark_after_decrypt.bmp"
+      .col-xs-4
+        %h4 Difference image between origin watermark and decrypted watermark
+        = image_tag "/result/#{@watermark.id}/difference_watermark_image.bmp"
+
+    .row
+      .col-xs-6
+        %h3= 'PSNR: ' + @psnr
+      .col-xs-6
+        %h3= 'SSIM: ' + @ssim
+
+    .row
+      .col-xs-12
+        = link_to 'Original image and watermark', watermark_path(@watermark), class: 'btn btn-primary'
+- else
+  - @result.each do |item|
+    .container
+      %h1
+        Attack:
+        = item[:attack_name]
+      .row
+        .col-xs-4
+          %h4 Original image
+          = image_tag @watermark.original_image.url, class: 'img-responsive'
+        .col-xs-4
+          %h4 Image with watermark
+          = image_tag "/result/#{@watermark.id}/encrypt_image.bmp", class: 'img-responsive'
+        .col-xs-4
+          %h4 Attacked image
+          = image_tag item[:attacked_image_path], class: 'img-responsive'
+
+      .row
+        .col-xs-4
+          %h4 Watermark
+          = image_tag @watermark.watermark.url
+        .col-xs-4
+          %h4 Decrypted watermark
+          = image_tag item[:watermark_after_decrypt_with_name]
+        .col-xs-4
+          %h4 Difference image between origin watermark and decrypted watermark
+          = image_tag item[:difference_image_between_original_watermark_and_result_watermark_with_name]
+
+      .row
+        .col-xs-6
+          %h3= 'PSNR: ' + item[:psnr]
+        .col-xs-6
+          %h3= 'SSIM: ' + item[:ssim]
+
+      .row
+        .col-xs-12
+          = link_to 'Original image and watermark', watermark_path(@watermark), class: 'btn btn-primary'

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     member do
       get :encrypt
       get :decrypt
+      get :decrypt_with_attack
+      get 'decrypt_with_attack/:attack', action: :decrypt_with_attack
     end
   end
 
