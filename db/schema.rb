@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123190827) do
+ActiveRecord::Schema.define(version: 20161202135658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,13 @@ ActiveRecord::Schema.define(version: 20161123190827) do
   create_table "watermarks", force: :cascade do |t|
     t.string   "watermark"
     t.string   "original_image"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "origin_psnr"
+    t.string   "origin_ssim"
+    t.string   "watermark_psnr"
+    t.string   "watermark_ssim"
+    t.boolean  "color",          default: false
   end
 
 end

@@ -4,18 +4,18 @@
   .row
     .col-xs-6
       %h4 Original image
-      = image_tag @watermark.original_image.url
+      = image_tag @watermark.original_image.url, class: 'img-responsive'
     .col-xs-6
       %h4 Watermark
-      = image_tag @watermark.watermark.url
+      = image_tag @watermark.watermark.url, class: 'img-responsive'
 
   .row
     .col-xs-6
       %h4 Image with watermark
-      = image_tag "/result/#{@watermark.id}/encrypt_image.bmp"
+      = image_tag "/result/#{@watermark.id}/encrypt_image.bmp", class: 'img-responsive'
     .col-xs-6
       %h4 Difference image between origin image and image with watermark
-      = image_tag "/result/#{@watermark.id}/difference_original_image.bmp"
+      = image_tag "/result/#{@watermark.id}/difference_original_image.bmp", class: 'img-responsive'
 
   .row
     .col-xs-6
@@ -26,3 +26,4 @@
   .row
     .col-xs-12
       = link_to 'Decrypt', decrypt_watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to 'Decrypt with attacks', decrypt_with_attack_watermark_path(@watermark, 'all'), class: 'btn btn-primary'

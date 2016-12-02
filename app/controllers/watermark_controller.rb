@@ -10,7 +10,7 @@ class WatermarkController < ApplicationController
   end
 
   def encrypt
-    @name_action = 'encrypt'
+    name_action('encrypt')
     @original_image_path = watermark.original_image.path
     @watermark_path = watermark.watermark.path
     @key_path_with_name = dir.to_s + '/key.pac'
@@ -19,7 +19,7 @@ class WatermarkController < ApplicationController
     @args = "'#{@name_action}' '#{@original_image_path}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@encrypt_image_path_with_name}' '#{@difference_image_between_original_image_and_result_image_path_with_name}'"
     @psnr = @ssim = nil
     ::Open3.popen3({"MYVAR" => "a_value"},
-                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/text13.exe #{@args}") do |i, o, e, w|
+                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
       i.close
       data = o.read
       data.slice! 'Infinity'
@@ -30,10 +30,11 @@ class WatermarkController < ApplicationController
       e.close
       w.value.exitstatus
     end
+    @watermark.update_attributes(origin_psnr: @psnr, origin_ssim: @ssim)
   end
 
   def decrypt
-    @name_action = 'decrypt'
+    name_action('decrypt')
     @encrypt_image_path_with_name = dir.to_s + '/encrypt_image.bmp'
     @watermark_path = watermark.watermark.path
     @key_path_with_name = dir.to_s + '/key.pac'
@@ -41,7 +42,7 @@ class WatermarkController < ApplicationController
     @difference_image_between_original_watermark_and_result_watermark_path_with_name = dir.to_s + '/difference_watermark_image.bmp'
     @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@watermark_after_decrypt_path_with_name}' '#{@difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
     ::Open3.popen3({"MYVAR" => "a_value"},
-                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/text17.exe #{@args}") do |i, o, e, w|
+                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
       i.close
       data = o.read
       data.slice! 'Infinity'
@@ -52,34 +53,48 @@ class WatermarkController < ApplicationController
       e.close
       w.value.exitstatus
     end
+    @watermark.update_attributes(watermark_psnr: @psnr, watermark_ssim: @ssim)
   end
 
   def decrypt_with_attack
     redirect_to root_path unless attack
     if attack_not_all?
-      @name_action = 'decrypt'
+      name_action('decrypt')
       @attack_name = attack_name
       @attacked_image_path = ImageAttack.send(attack, @watermark.original_image, @watermark.id)
       @encrypt_image_path_with_name = path_to_public.to_s + @attacked_image_path
       @watermark_path = watermark.watermark.path
       @key_path_with_name = dir.to_s + '/key.pac'
-      @watermark_after_decrypt_path_with_name = dir.to_s + '/watermark_after_decrypt.bmp'
-      @difference_image_between_original_watermark_and_result_watermark_path_with_name = dir.to_s + '/difference_watermark_image.bmp'
+      watermark_after_decrypt_with_name = "/result/#{watermark.id}/watermark_after_decrypt_with_#{attack}_attack.bmp"
+      @watermark_after_decrypt_path_with_name = path_to_public.to_s + watermark_after_decrypt_with_name
+      difference_image_between_original_watermark_and_result_watermark_with_name = "/result/#{watermark.id}/difference_watermark_image_after_#{attack}_attack.bmp"
+      @difference_image_between_original_watermark_and_result_watermark_path_with_name = path_to_public.to_s + difference_image_between_original_watermark_and_result_watermark_with_name
       @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@watermark_after_decrypt_path_with_name}' '#{@difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
+      psnr = ssim = nil
       ::Open3.popen3({"MYVAR" => "a_value"},
-                     "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/text17.exe #{@args}") do |i, o, e, w|
+                     "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
         i.close
         data = o.read
         data.slice! 'Infinity'
         split_data = data.split
-        @psnr = split_data[1]
-        @ssim = split_data[3]
+        psnr = split_data[1]
+        ssim = split_data[3]
         o.close
         e.close
         w.value.exitstatus
       end
+      @result = [
+        {
+          attack_name: @attack_name,
+          attacked_image_path: @attacked_image_path,
+          watermark_after_decrypt_with_name: watermark_after_decrypt_with_name,
+          difference_image_between_original_watermark_and_result_watermark_with_name: difference_image_between_original_watermark_and_result_watermark_with_name,
+          psnr: psnr,
+          ssim: ssim
+        }
+      ]
     else
-      @name_action = 'decrypt'
+      name_action('decrypt')
       @attacked_image_pathes_with_attacks = ImageAttack.all(@watermark.original_image, @watermark.id)
       @watermark_path = watermark.watermark.path
       @key_path_with_name = dir.to_s + '/key.pac'
@@ -94,7 +109,7 @@ class WatermarkController < ApplicationController
         @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{watermark_after_decrypt_path_with_name}' '#{difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
         psnr = ssim = nil
         ::Open3.popen3({"MYVAR" => "a_value"},
-                       "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/text17.exe #{@args}") do |i, o, e, w|
+                       "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
           i.close
           data = o.read
           data.slice! 'Infinity'
@@ -105,7 +120,8 @@ class WatermarkController < ApplicationController
           e.close
           w.value.exitstatus
         end
-        { attack_name: attack_name(attack),
+        {
+          attack_name: attack_name(attack),
           attacked_image_path: attacked_image_path,
           watermark_after_decrypt_with_name: watermark_after_decrypt_with_name,
           difference_image_between_original_watermark_and_result_watermark_with_name: difference_image_between_original_watermark_and_result_watermark_with_name,
@@ -131,6 +147,10 @@ class WatermarkController < ApplicationController
 
   private
 
+  def name_action(action)
+    @name_action = @watermark.color ? "color-#{action}" : action
+  end
+
   def attack_not_all?
     @is_attack_not_all ||= attack != 'all'
   end
@@ -140,8 +160,8 @@ class WatermarkController < ApplicationController
   end
 
   def attack_name(name = nil)
-    new_attack_name = name.to_s || attack
-    new_attack_name.tr('_', ' ').capitalize
+    new_attack_name = name || attack
+    new_attack_name.to_s.tr('_', ' ').capitalize
   end
 
   def dir
@@ -165,6 +185,6 @@ class WatermarkController < ApplicationController
   end
 
   def watermark_params
-    params.require(:watermark).permit(:watermark, :original_image)
+    params.require(:watermark).permit(:watermark, :original_image, :color)
   end
 end
