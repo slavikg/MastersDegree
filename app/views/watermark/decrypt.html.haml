@@ -29,3 +29,4 @@
   .row
     .col-xs-12
       = link_to 'Original image and watermark', watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to 'Decrypt with attacks', decrypt_with_attack_watermark_path(@watermark, 'all'), class: 'btn btn-primary'
