@@ -1,8 +1,8 @@
-- page_title 'Watermark'
+- page_title t('.title')
 
 .container
-  %h1 Hi! You on Watermark app
+  %h1= t('.hi')
   %h2
     = link_to new_watermark_path do
-      Go work with
-      %b Watermark
+      = t('.go_to_work')
+      %b= t('watermark_en')

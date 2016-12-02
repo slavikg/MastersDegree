@@ -60,7 +60,7 @@ class WatermarkController < ApplicationController
     redirect_to root_path unless attack
     if attack_not_all?
       name_action('decrypt')
-      @attack_name = attack_name
+      @attack_name = attack
       @attacked_image_path = ImageAttack.send(attack, @watermark.original_image, @watermark.id)
       @encrypt_image_path_with_name = path_to_public.to_s + @attacked_image_path
       @watermark_path = watermark.watermark.path
@@ -121,7 +121,7 @@ class WatermarkController < ApplicationController
           w.value.exitstatus
         end
         {
-          attack_name: attack_name(attack),
+          attack_name: attack,
           attacked_image_path: attacked_image_path,
           watermark_after_decrypt_with_name: watermark_after_decrypt_with_name,
           difference_image_between_original_watermark_and_result_watermark_with_name: difference_image_between_original_watermark_and_result_watermark_with_name,

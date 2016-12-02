@@ -1,32 +1,35 @@
-- page_title 'Decrypt'
+- page_title t('.title')
 
 .container
   .row
     .col-xs-6
-      %h4 Original image
-      = image_tag @watermark.original_image.url
+      %h4= t('original_image')
+      = image_tag @watermark.original_image.url, class: 'img-responsive'
     .col-xs-6
-      %h4 Image with watermark
-      = image_tag "/result/#{@watermark.id}/encrypt_image.bmp"
+      %h4= t('image_with_watermark')
+      = image_tag "/result/#{@watermark.id}/encrypt_image.bmp", class: 'img-responsive'
 
   .row
     .col-xs-4
-      %h4 Watermark
-      = image_tag @watermark.watermark.url
+      %h4= t('watermark_ua')
     .col-xs-4
-      %h4 Decrypted watermark
-      = image_tag "/result/#{@watermark.id}/watermark_after_decrypt.bmp"
+      %h4= t('decrypted_watermark')
     .col-xs-4
-      %h4 Difference image between origin watermark and decrypted watermark
-      = image_tag "/result/#{@watermark.id}/difference_watermark_image.bmp"
+      %h4= t('.difference_origin_watermark_and_decrypted_watermark')
+    .col-xs-4
+      = image_tag @watermark.watermark.url, class: 'img-responsive'
+    .col-xs-4
+      = image_tag "/result/#{@watermark.id}/watermark_after_decrypt.bmp", class: 'img-responsive'
+    .col-xs-4
+      = image_tag "/result/#{@watermark.id}/difference_watermark_image.bmp", class: 'img-responsive'
 
   .row
     .col-xs-6
-      %h3= 'PSNR: ' + @psnr
+      %h3= "#{t('psnr')}: #{@psnr}"
     .col-xs-6
-      %h3= 'SSIM: ' + @ssim
+      %h3= "#{t('ssim')}: #{@ssim}"
 
   .row
     .col-xs-12
-      = link_to 'Original image and watermark', watermark_path(@watermark), class: 'btn btn-primary'
-      = link_to 'Decrypt with attacks', decrypt_with_attack_watermark_path(@watermark, 'all'), class: 'btn btn-primary'
+      = link_to t('original_image_and_watermark'), watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to t('decrypt_with_attack'), decrypt_with_attack_watermark_path(@watermark, 'all'), class: 'btn btn-primary'

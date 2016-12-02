@@ -1,16 +1,16 @@
-- page_title 'Watermark'
+- page_title t('new.title')
 
 .container
   = form_for @watermark, method: :post, url: watermark_index_path, html: { multipart: true } do |f|
     .form-group
-      %h3 Original image
+      %h3= t('original_image')
       = f.file_field :original_image
     .form-group
-      %h3 Watermark
+      %h3= t('watermark_ua')
       = f.file_field :watermark
     .checkbox
       = f.label :color do
         = f.check_box :color
-        Color
+        = t('.color')
 
-    = f.submit 'Do it', class: 'btn btn-default'
+    = f.submit t('.do_it'), class: 'btn btn-default'

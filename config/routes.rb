@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'watermark#index'
+  get 'set_locale' => 'application#set_locale'
   resources :watermark, only: [:show, :new, :create] do
     member do
       get :encrypt

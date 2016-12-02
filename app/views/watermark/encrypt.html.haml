@@ -1,29 +1,31 @@
-- page_title 'Encrypt'
+- page_title t('.title')
 
 .container
   .row
     .col-xs-6
-      %h4 Original image
+      %h4= t('original_image')
       = image_tag @watermark.original_image.url, class: 'img-responsive'
     .col-xs-6
-      %h4 Watermark
+      %h4= t('watermark_ua')
       = image_tag @watermark.watermark.url, class: 'img-responsive'
 
   .row
     .col-xs-6
-      %h4 Image with watermark
+      %h4= t('image_with_watermark')
+    .col-xs-6
+      %h4= t('.difference_origin_and_origin_with_watermark')
+    .col-xs-6
       = image_tag "/result/#{@watermark.id}/encrypt_image.bmp", class: 'img-responsive'
     .col-xs-6
-      %h4 Difference image between origin image and image with watermark
       = image_tag "/result/#{@watermark.id}/difference_original_image.bmp", class: 'img-responsive'
 
   .row
     .col-xs-6
-      %h3= 'PSNR: ' + @psnr
+      %h3= "#{t('psnr')}: #{@psnr}"
     .col-xs-6
-      %h3= 'SSIM: ' + @ssim
+      %h3= "#{t('ssim')}: #{@ssim}"
 
   .row
     .col-xs-12
-      = link_to 'Decrypt', decrypt_watermark_path(@watermark), class: 'btn btn-primary'
-      = link_to 'Decrypt with attacks', decrypt_with_attack_watermark_path(@watermark, 'all'), class: 'btn btn-primary'
+      = link_to t('decrypt'), decrypt_watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to t('decrypt_with_attack'), decrypt_with_attack_watermark_path(@watermark, 'all'), class: 'btn btn-primary'

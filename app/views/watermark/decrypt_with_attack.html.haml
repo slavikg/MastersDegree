@@ -1,28 +1,31 @@
-- page_title 'Decrypt with attack'
+- page_title t('.title')
 
 - @result.each do |item|
   .container
     %h1
-      Attack:
-      = item[:attack_name]
+      = "#{t('.attack')}:"
+      = t(".attacks.#{item[:attack_name]}")
     .row
       .col-xs-4
-        %h4 Original image
+        %h4= t('original_image')
+      .col-xs-4
+        %h4= t('image_with_watermark')
+      .col-xs-4
+        %h4= t('.attacked_image_with_watermark')
+      .col-xs-4
         = image_tag @watermark.original_image.url, class: 'img-responsive'
       .col-xs-4
-        %h4 Image with watermark
         = image_tag "/result/#{@watermark.id}/encrypt_image.bmp", class: 'img-responsive'
       .col-xs-4
-        %h4 Attacked image
         = image_tag item[:attacked_image_path], class: 'img-responsive'
 
     .row
       .col-xs-4
-        %h4 Watermark
+        %h4= t('watermark_ua')
       .col-xs-4
-        %h4 Decrypted watermark
+        %h4= t('decrypted_watermark')
       .col-xs-4
-        %h4 Difference image between origin watermark and decrypted watermark after attack
+        %h4= t('.defference_origin_watermark_and_decrypted_after_attack')
       .col-xs-4
         = image_tag @watermark.watermark.url
       .col-xs-4
@@ -37,35 +40,35 @@
           %table.table.table-bordered
             %thead
               %tr
-                %th Origin image Robustness coefficients
-                %th Origin
-                %th Attacked
-                %th Difference
+                %th= t('.origin_image_robustness_coefficients')
+                %th= t('.origin')
+                %th= t('.attacked')
+                %th= t('.difference')
             %tbody
               %tr
-                %th{scope: 'row'} PSNR
+                %th{scope: 'row'}= t('psnr')
                 %td= @watermark.origin_psnr
                 %td No
                 %td No
               %tr
-                %th{scope: 'row'} SSIM
+                %th{scope: 'row'}= t('ssim')
                 %td= @watermark.origin_ssim
                 %td No
                 %td No
             %thead
               %tr
-                %th Watermark Robustness coefficients
-                %th Origin
-                %th Attacked
-                %th Difference
+                %th= t('.watermark_robustness coeficients')
+                %th= t('.origin')
+                %th= t('.attacked')
+                %th= t('.difference')
             %tbody
               %tr
-                %th{scope: 'row'} PSNR
+                %th{scope: 'row'}= t('psnr')
                 %td= @watermark.watermark_psnr
                 %td= item[:psnr]
                 %td= item[:psnr].to_f - @watermark.watermark_psnr.to_f
               %tr
-                %th{scope: 'row'} SSIM
+                %th{scope: 'row'}= t('ssim')
                 %td= @watermark.watermark_ssim
                 %td= item[:ssim]
                 %td= item[:ssim].to_f - @watermark.watermark_ssim.to_f
@@ -73,4 +76,4 @@
 .container
   .row
     .col-xs-12
-      = link_to 'Original image and watermark', watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to t('original_image_and_watermark'), watermark_path(@watermark), class: 'btn btn-primary'

@@ -1,12 +1,12 @@
-- page_title 'Result'
+- page_title t('.title')
 
 .container
   .row
     .col-xs-6
-      %h4 Original image
+      %h4= t('original_image')
       = image_tag @watermark.original_image.url
     .col-xs-6
-      %h4 Watermark
+      %h4= t('watermark_ua')
       = image_tag @watermark.watermark.url
   .row
     .col-xs-12
@@ -15,17 +15,17 @@
           %thead
             %tr
               %th X
-              %th Height
-              %th Width
+              %th= t('.height')
+              %th= t('.width')
           %tbody
             %tr
-              %th{scope: 'row'} Origin image
+              %th{scope: 'row'}= t('original_image')
               %td= @watermark.original_image.height
               %td= @watermark.original_image.width
             %tr
-              %th{scope: 'row'} Watermark
+              %th{scope: 'row'}= t('watermark_ua')
               %td= @watermark.watermark.height
               %td= @watermark.watermark.width
     .col-xs-12
-      = link_to 'Encrypt', encrypt_watermark_path(@watermark), class: 'btn btn-primary'
-      = link_to 'Decrypt', decrypt_watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to t('encrypt'), encrypt_watermark_path(@watermark), class: 'btn btn-primary'
+      = link_to t('decrypt'), decrypt_watermark_path(@watermark), class: 'btn btn-primary'

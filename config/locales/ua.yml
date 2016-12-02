@@ -1,0 +1,81 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ua:
+  original_image: Оригінальне зображення
+  watermark_en: Watermark
+  watermark_ua: Водяний знак
+  encrypt: Шифрувати
+  decrypt: Дешифрувати
+  decrypt_with_attack: Дешифрувати з атакою
+  image_with_watermark: Зображення з водяним знаком
+  psnr: PSNR
+  ssim: SSIM
+  decrypted_watermark: Дешифрований водяний знак
+  original_image_and_watermark: Оригінальне зображення і водяний знак
+
+  watermark:
+    index:
+      title: Watermark
+      hi: Вітаю! Ви знаходитесь в додатку Watermark
+      go_to_work: Перейти до роботи з
+
+    new:
+      title: Водяний знак
+      color: Зображення кольорове?
+      do_it: Завантажити
+
+    show:
+      title: Завантажені зображення
+      height: Висота
+      width: Ширина
+
+    encrypt:
+      title: Шифрування
+      difference_origin_and_origin_with_watermark: Відмінність між оригінальним зображенням і зображенням з водяним знаком
+
+    decrypt:
+      title: Дешифрування
+      difference_origin_watermark_and_decrypted_watermark: Відмінність між оригінальним водяним знаком і дешифрованим водяним знаком
+
+    decrypt_with_attack:
+      title: Дешифрування з атакою
+      attack: Атака
+      attacked: Атаковане
+      attacked_image_with_watermark: Атаковане зображення з водяним знаком
+      defference_origin_watermark_and_decrypted_after_attack: Відмінність між оригінальним водяним знаком і дешифрованим водяним знаком після атаки
+      origin_image_robustness_coefficients: Коефіціенти стійкості оригінального зображення
+      watermark_robustness coeficients: Коефіціенти стійкості водяного знаку
+      origin: Оригінальне
+      difference: Різниця
+      attacks:
+        crop_and_big_resize: Обрізати і розтягнути
+        big_resize_and_crop: Розтягнути і обрізати
+        small_resize_and_big_resize: Зменшити і розтягнути
+        big_resize_and_small_resize: Розтягнути і зменшити
+        flop: Відзеркалити
+        rotate_to_right: Повернути направо
+        rotate_to_left: Повернути наліво
+        flip: Перевернути
+        convert_from_bmp_to_jpg_and_back: Перетворити з bmp в jpg і назад
+        change_depth_by_one: Зменшити глибину на одиницю
+        blur: Розмити
+        sharpen: Збільшити різкість на одиницю

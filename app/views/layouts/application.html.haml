@@ -1,12 +1,19 @@
 !!!
 %html
-%head
-  %title= yield :title
-  = stylesheet_link_tag    'application', media: 'all'
-  = csrf_meta_tags
+  %head
+    %title= yield :title
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
 
-%body
+  %body
+    .container
+      %header
+        .pull-right
+          = link_to set_locale_url(locale: 'ua') do
+            = image_tag 'ua_flag.png'
+          = link_to set_locale_url(locale: 'en') do
+            = image_tag 'uk_flag.png'
 
-  = yield
+    = yield
 
-  = javascript_include_tag 'application'
+    = javascript_include_tag 'application'

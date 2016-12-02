@@ -20,4 +20,62 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  original_image: Original image
+  watermark_en: Watermark
+  watermark_ua: Watermark
+  encrypt: Encrypt
+  decrypt: Decrypt
+  decrypt_with_attack: Decrypt with attacks
+  image_with_watermark: Image with watermark
+  psnr: PSNR
+  ssim: SSIM
+  decrypted_watermark: Decrypted watermark
+  original_image_and_watermark: Original image and watermark
+
+  watermark:
+    index:
+      title: Watermark
+      hi: Hi! You on Watermark app
+      go_to_work: Go work with
+
+    new:
+      title: Watermark
+      color: Color
+      do_it: Do it
+
+    show:
+      title: Downloaded images
+      height: Height
+      width: Width
+
+    encrypt:
+      title: Encrypt
+      difference_origin_and_origin_with_watermark: Difference image between origin image and image with watermark
+
+    decrypt:
+      title: Decrypt
+      difference_origin_watermark_and_decrypted_watermark: Difference image between origin watermark and decrypted watermark
+
+    decrypt_with_attack:
+      title: Decrypt with attack
+      attack: Attack
+      attacked: Attacked
+      attacked_image_with_watermark: Attacked image with watermark
+      defference_origin_watermark_and_decrypted_after_attack: Difference image between origin watermark and decrypted watermark after attack
+      origin_image_robustness_coefficients: Origin image Robustness coefficients
+      watermark_robustness coeficients: Watermark Robustness coefficients
+      origin: Origin
+      difference: Difference
+      attacks:
+        crop_and_big_resize: Crop and big resize
+        big_resize_and_crop: Big resize and crop
+        small_resize_and_big_resize: Small resize and big resize
+        big_resize_and_small_resize: Big resize and small resize
+        flop: Flop
+        rotate_to_right: Rotate to right
+        rotate_to_left: Rotate to left
+        flip: Flip
+        convert_from_bmp_to_jpg_and_back: Convert from bmp to jpg and back
+        change_depth_by_one: Change depth by one
+        blur: Blur
+        sharpen: Sharpen
