@@ -40,24 +40,24 @@
           %table.table.table-bordered
             %thead
               %tr
-                %th= t('.origin_image_robustness_coefficients')
-                %th= t('.origin')
+                %th= "#{t('.origin_image_robustness_coefficients')} #{t('.after')} #{t(".attacks.#{item[:attack_name]}")}"
+                %th= t('.encrypted')
                 %th= t('.attacked')
                 %th= t('.difference')
             %tbody
               %tr
                 %th{scope: 'row'}= t('psnr')
                 %td= @watermark.origin_psnr
-                %td No
-                %td No
+                %td= item[:psnr_origin]
+                %td= item[:psnr_origin].to_f - @watermark.origin_psnr.to_f
               %tr
                 %th{scope: 'row'}= t('ssim')
                 %td= @watermark.origin_ssim
-                %td No
-                %td No
+                %td= item[:ssim_origin]
+                %td= item[:ssim_origin].to_f - @watermark.origin_ssim.to_f
             %thead
               %tr
-                %th= t('.watermark_robustness coeficients')
+                %th= "#{t('.watermark_robustness coeficients')} #{t('.after')} #{t(".attacks.#{item[:attack_name]}")}"
                 %th= t('.origin')
                 %th= t('.attacked')
                 %th= t('.difference')

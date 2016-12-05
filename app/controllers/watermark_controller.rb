@@ -19,7 +19,7 @@ class WatermarkController < ApplicationController
     @args = "'#{@name_action}' '#{@original_image_path}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@encrypt_image_path_with_name}' '#{@difference_image_between_original_image_and_result_image_path_with_name}'"
     @psnr = @ssim = nil
     ::Open3.popen3({"MYVAR" => "a_value"},
-                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
+                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test21.exe #{@args}") do |i, o, e, w|
       i.close
       data = o.read
       data.slice! 'Infinity'
@@ -42,7 +42,7 @@ class WatermarkController < ApplicationController
     @difference_image_between_original_watermark_and_result_watermark_path_with_name = dir.to_s + '/difference_watermark_image.bmp'
     @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@watermark_after_decrypt_path_with_name}' '#{@difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
     ::Open3.popen3({"MYVAR" => "a_value"},
-                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
+                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test21.exe #{@args}") do |i, o, e, w|
       i.close
       data = o.read
       data.slice! 'Infinity'
@@ -59,40 +59,7 @@ class WatermarkController < ApplicationController
   def decrypt_with_attack
     redirect_to root_path unless attack
     if attack_not_all?
-      name_action('decrypt')
-      @attack_name = attack
-      @attacked_image_path = ImageAttack.send(attack, @watermark.original_image, @watermark.id)
-      @encrypt_image_path_with_name = path_to_public.to_s + @attacked_image_path
-      @watermark_path = watermark.watermark.path
-      @key_path_with_name = dir.to_s + '/key.pac'
-      watermark_after_decrypt_with_name = "/result/#{watermark.id}/watermark_after_decrypt_with_#{attack}_attack.bmp"
-      @watermark_after_decrypt_path_with_name = path_to_public.to_s + watermark_after_decrypt_with_name
-      difference_image_between_original_watermark_and_result_watermark_with_name = "/result/#{watermark.id}/difference_watermark_image_after_#{attack}_attack.bmp"
-      @difference_image_between_original_watermark_and_result_watermark_path_with_name = path_to_public.to_s + difference_image_between_original_watermark_and_result_watermark_with_name
-      @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@watermark_after_decrypt_path_with_name}' '#{@difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
-      psnr = ssim = nil
-      ::Open3.popen3({"MYVAR" => "a_value"},
-                     "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
-        i.close
-        data = o.read
-        data.slice! 'Infinity'
-        split_data = data.split
-        psnr = split_data[1]
-        ssim = split_data[3]
-        o.close
-        e.close
-        w.value.exitstatus
-      end
-      @result = [
-        {
-          attack_name: @attack_name,
-          attacked_image_path: @attacked_image_path,
-          watermark_after_decrypt_with_name: watermark_after_decrypt_with_name,
-          difference_image_between_original_watermark_and_result_watermark_with_name: difference_image_between_original_watermark_and_result_watermark_with_name,
-          psnr: psnr,
-          ssim: ssim
-        }
-      ]
+      @result = [decrypt_with_attack_one]
     else
       name_action('decrypt')
       @attacked_image_pathes_with_attacks = ImageAttack.all(@watermark.original_image, @watermark.id)
@@ -101,33 +68,7 @@ class WatermarkController < ApplicationController
       @result = @attacked_image_pathes_with_attacks.map do |attacked_image_path_with_attack|
         attack = attacked_image_path_with_attack[:attack]
         attacked_image_path = attacked_image_path_with_attack[:path]
-        @encrypt_image_path_with_name = path_to_public.to_s + attacked_image_path
-        watermark_after_decrypt_with_name = "/result/#{watermark.id}/watermark_after_decrypt_with_#{attack}_attack.bmp"
-        watermark_after_decrypt_path_with_name = path_to_public.to_s + watermark_after_decrypt_with_name
-        difference_image_between_original_watermark_and_result_watermark_with_name = "/result/#{watermark.id}/difference_watermark_image_after_#{attack}_attack.bmp"
-        difference_image_between_original_watermark_and_result_watermark_path_with_name = path_to_public.to_s + difference_image_between_original_watermark_and_result_watermark_with_name
-        @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{watermark_after_decrypt_path_with_name}' '#{difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
-        psnr = ssim = nil
-        ::Open3.popen3({"MYVAR" => "a_value"},
-                       "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test19.exe #{@args}") do |i, o, e, w|
-          i.close
-          data = o.read
-          data.slice! 'Infinity'
-          split_data = data.split
-          psnr = split_data[1]
-          ssim = split_data[3]
-          o.close
-          e.close
-          w.value.exitstatus
-        end
-        {
-          attack_name: attack,
-          attacked_image_path: attacked_image_path,
-          watermark_after_decrypt_with_name: watermark_after_decrypt_with_name,
-          difference_image_between_original_watermark_and_result_watermark_with_name: difference_image_between_original_watermark_and_result_watermark_with_name,
-          psnr: psnr,
-          ssim: ssim
-        }
+        decrypt_with_attack_one(attack, attacked_image_path)
       end
     end
   end
@@ -147,8 +88,64 @@ class WatermarkController < ApplicationController
 
   private
 
-  def name_action(action)
-    @name_action = @watermark.color ? "color-#{action}" : action
+  def decrypt_with_attack_one(attack_from_all = nil, attacked_image_path = nil)
+    name_action('decrypt')
+    @attack_name = attack_from_all || attack
+    @attacked_image_path = attacked_image_path || ImageAttack.send(attack, @watermark.original_image, @watermark.id)
+    @encrypt_image_path_with_name = path_to_public.to_s + @attacked_image_path
+    @watermark_path = watermark.watermark.path
+    @key_path_with_name = dir.to_s + '/key.pac'
+    watermark_after_decrypt_with_name = "/result/#{watermark.id}/watermark_after_decrypt_with_#{@attack_name}_attack.bmp"
+    @watermark_after_decrypt_path_with_name = path_to_public.to_s + watermark_after_decrypt_with_name
+    difference_image_between_original_watermark_and_result_watermark_with_name = "/result/#{watermark.id}/difference_watermark_image_after_#{@attack_name}_attack.bmp"
+    @difference_image_between_original_watermark_and_result_watermark_path_with_name = path_to_public.to_s + difference_image_between_original_watermark_and_result_watermark_with_name
+    @args = "'#{@name_action}' '#{@encrypt_image_path_with_name}' '#{@watermark_path}' '#{@key_path_with_name}' '#{@watermark_after_decrypt_path_with_name}' '#{@difference_image_between_original_watermark_and_result_watermark_path_with_name}'"
+    psnr = ssim = nil
+    ::Open3.popen3({"MYVAR" => "a_value"},
+                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test21.exe #{@args}") do |i, o, e, w|
+      i.close
+      data = o.read
+      data.slice! 'Infinity'
+      split_data = data.split
+      psnr = split_data[1]
+      ssim = split_data[3]
+      o.close
+      e.close
+      w.value.exitstatus
+    end
+    name_action('decrypt', true)
+    @args = "'#{@name_action}' '#{watermark.original_image.path}' '#{@encrypt_image_path_with_name}'"
+    psnr_origin = ssim_origin = nil
+    ::Open3.popen3({"MYVAR" => "a_value"},
+                   "/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono vendor/encrypt/test21.exe #{@args}") do |i, o, e, w|
+      i.close
+      data = o.read
+      data.slice! 'Infinity'
+      split_data = data.split
+      psnr_origin = split_data[0]
+      ssim_origin = split_data[1]
+      o.close
+      e.close
+      w.value.exitstatus
+    end
+    {
+        attack_name: @attack_name,
+        attacked_image_path: @attacked_image_path,
+        watermark_after_decrypt_with_name: watermark_after_decrypt_with_name,
+        difference_image_between_original_watermark_and_result_watermark_with_name: difference_image_between_original_watermark_and_result_watermark_with_name,
+        psnr: psnr,
+        ssim: ssim,
+        psnr_origin: psnr_origin,
+        ssim_origin: ssim_origin
+    }
+  end
+
+  def name_action(action, coeficient = nil)
+    unless coeficient
+      @name_action = @watermark.color ? "color-#{action}" : action
+    else
+      @name_action = @watermark.color ? 'color-coeficients' : 'coeficients'
+    end
   end
 
   def attack_not_all?

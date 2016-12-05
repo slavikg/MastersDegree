@@ -63,8 +63,9 @@ en:
       attacked_image_with_watermark: Attacked image with watermark
       defference_origin_watermark_and_decrypted_after_attack: Difference image between origin watermark and decrypted watermark after attack
       origin_image_robustness_coefficients: Origin image Robustness coefficients
+      after: after
       watermark_robustness coeficients: Watermark Robustness coefficients
-      origin: Origin
+      encrypted: Encrypted
       difference: Difference
       attacks:
         crop_and_big_resize: Crop and big resize

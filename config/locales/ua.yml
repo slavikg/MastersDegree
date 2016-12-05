@@ -63,8 +63,9 @@ ua:
       attacked_image_with_watermark: Атаковане зображення з водяним знаком
       defference_origin_watermark_and_decrypted_after_attack: Відмінність між оригінальним водяним знаком і дешифрованим водяним знаком після атаки
       origin_image_robustness_coefficients: Коефіціенти стійкості оригінального зображення
+      after: після
       watermark_robustness coeficients: Коефіціенти стійкості водяного знаку
-      origin: Оригінальне
+      encrypted: Вбудоване
       difference: Різниця
       attacks:
         crop_and_big_resize: Обрізати і розтягнути
